@@ -3,6 +3,7 @@ import "./App.css";
 import WishList from "./types/WishList";
 import api from "./api";
 import Loading from "./components/Loading";
+import WishListContainer from "./components/WishListContainer";
 
 function App() {
   //necessary assumption: fetch all carts will return carts from the user's 5 children.
@@ -19,7 +20,7 @@ function App() {
     fetchWishLists();
   }, [fetchWishLists]);
 
-  return <div className="App">{isLoading ? <Loading /> : <div>show wishLists</div>}</div>;
+  return <div className="App">{isLoading ? <Loading /> : <WishListContainer wishLists={wishLists} />}</div>;
 }
 
 export default App;
