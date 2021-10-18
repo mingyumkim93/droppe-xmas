@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import "./App.css";
 import WishList from "./types/WishList";
 import api from "./api";
+import Loading from "./components/Loading";
 
 function App() {
   //necessary assumption: fetch all carts will return carts from the user's 5 children.
@@ -18,11 +19,7 @@ function App() {
     fetchWishLists();
   }, [fetchWishLists]);
 
-  useEffect(() => {
-    console.log(wishLists);
-  }, [wishLists]);
-
-  return <div className="App">App component</div>;
+  return <div className="App">{isLoading ? <Loading /> : <div>show wishLists</div>}</div>;
 }
 
 export default App;
