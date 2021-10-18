@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import WishList from "../types/WishList";
+import ProductCard from "./ProductCard";
 import "./List.css";
 
 interface ListProps {
@@ -17,7 +18,13 @@ function List({ wishList }: ListProps) {
       <button className="list" onClick={toggleOpen}>
         {wishList.owner}
       </button>
-      {open && <div className="content">show products here</div>}
+      {open && (
+        <div className="content">
+          {wishList.products.map((product) => (
+            <ProductCard productDetail={product.productDetail} key={product.productDetail.id} />
+          ))}
+        </div>
+      )}
     </>
   );
 }
