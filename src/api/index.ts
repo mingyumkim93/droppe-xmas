@@ -6,30 +6,21 @@ import Product from "../types/Product";
 import WishList from "../types/WishList";
 const BASE_URL = "http://fakestoreapi.com/";
 
-function mergeCartsByUserId(before: Cart[]) {
-  let mergedCarts: Cart[] = [];
-  before.forEach((cart) => {
-    const existingIndex = mergedCarts.findIndex((mergedCart) => mergedCart.userId === cart.userId);
-    if (existingIndex < 0) mergedCarts.push(cart);
-    else {
-      const concatenatedProducts = mergedCarts[existingIndex].products.concat(cart.products);
-      mergedCarts[existingIndex].products = mergeProductsById(concatenatedProducts);
-    }
+function getLatestCartPerChild(fetchedCarts: Cart[]) {
+  let childrenIds: number[] = [];
+  fetchedCarts.forEach((cart) => {
+    if (!childrenIds.includes(cart.userId)) childrenIds.push(cart.userId);
   });
-  return mergedCarts;
-}
 
-function mergeProductsById(products: Product[]) {
-  let mergedProducts: Product[] = [];
-  products.forEach((product) => {
-    const i = mergedProducts.findIndex((mergedProduct) => mergedProduct.productId === product.productId);
-    if (i < 0) {
-      mergedProducts.push(product);
-    } else {
-      mergedProducts[i].quantity += product.quantity;
-    }
+  const cartGroupsByChild = childrenIds.map((childId) => fetchedCarts.filter((cart) => cart.userId === childId));
+  const latestCartPerChild = cartGroupsByChild.map((cartGroup) => {
+    if (cartGroup.length > 1)
+      return cartGroup.sort((a, b) => {
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
+      })[0];
+    else return cartGroup[0];
   });
-  return mergedProducts;
+  return latestCartPerChild;
 }
 
 function getProductIdsFromCarts(carts: Cart[]) {
@@ -40,12 +31,6 @@ function getProductIdsFromCarts(carts: Cart[]) {
     });
   });
   return productIds;
-}
-
-async function fetchCarts() {
-  const res = await axios.get(BASE_URL + "carts");
-  const carts = mergeCartsByUserId(res.data as Cart[]);
-  return carts;
 }
 
 async function fetchProductDetailsInCarts(carts: Cart[]) {
@@ -68,10 +53,13 @@ async function fetchCartOwners(carts: Cart[]) {
   return users;
 }
 
-function getWishLists(carts: Cart[], children: User[], productDetails: ProductDetail[]) {
+function createWishLists(carts: Cart[], children: User[], productDetails: ProductDetail[]) {
   const wishLists: WishList[] = carts.map((cart) => {
     return {
-      owner: children.find((user) => user.id === cart.userId)!.name.firstname,
+      cartId: cart.id,
+      date: cart.date,
+      userId: cart.userId,
+      userFirstName: children.find((user) => user.id === cart.userId)!.name.firstname,
       products: cart.products.map((product) => {
         return {
           productDetail: productDetails.find((detail) => detail.id === product.productId)!,
@@ -83,14 +71,21 @@ function getWishLists(carts: Cart[], children: User[], productDetails: ProductDe
   return wishLists;
 }
 
-async function fetchWishLists() {
+async function fetchCarts() {
+  const res = await axios.get(BASE_URL + "carts");
+  const carts = getLatestCartPerChild(res.data as Cart[]);
+  return carts;
+}
+
+async function getWishLists() {
   const carts = await fetchCarts();
   const productDetails = await fetchProductDetailsInCarts(carts);
-  const children = await fetchCartOwners(carts);
-  const wishLists = getWishLists(carts, children, productDetails);
+  const users = await fetchCartOwners(carts);
+  const wishLists = createWishLists(carts, users, productDetails);
+  console.log(wishLists);
   return wishLists;
 }
 
-const api = { fetchWishLists };
+const api = { getWishLists };
 
 export default api;

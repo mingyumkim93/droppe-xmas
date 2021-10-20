@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import WishList from "../types/WishList";
 import ProductCard from "./ProductCard";
 import ProductQuantityControl from "./ProductQuantityControl";
-import "./List.css";
 
-interface ListProps {
+interface WishListProps {
   wishList: WishList;
 }
 
-function List({ wishList }: ListProps) {
+function WishListItem({ wishList }: WishListProps) {
   const [open, setOpen] = useState(false);
   function toggleOpen() {
     setOpen(!open);
@@ -17,7 +16,7 @@ function List({ wishList }: ListProps) {
   return (
     <>
       <button className="list" onClick={toggleOpen}>
-        {/* {wishList.owner} */}
+        {wishList.userFirstName}
       </button>
       {open && (
         <div className="content-container">
@@ -33,4 +32,4 @@ function List({ wishList }: ListProps) {
   );
 }
 
-export default List;
+export default WishListItem;
