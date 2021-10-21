@@ -2,7 +2,6 @@ import axios from "axios";
 import Cart from "../types/Cart";
 import ProductDetail from "../types/ProductDetail";
 import User from "../types/User";
-import Product from "../types/Product";
 import WishList from "../types/WishList";
 const BASE_URL = "http://fakestoreapi.com/";
 
@@ -63,7 +62,8 @@ function createWishLists(carts: Cart[], children: User[], productDetails: Produc
       products: cart.products.map((product) => {
         return {
           productDetail: productDetails.find((detail) => detail.id === product.productId)!,
-          quantity: product.quantity
+          quantity: product.quantity,
+          approvedAmount: product.quantity
         };
       })
     };
@@ -82,7 +82,6 @@ async function getWishLists() {
   const productDetails = await fetchProductDetailsInCarts(carts);
   const users = await fetchCartOwners(carts);
   const wishLists = createWishLists(carts, users, productDetails);
-  console.log(wishLists);
   return wishLists;
 }
 

@@ -27,7 +27,8 @@ function WishListItem({ wishList }: WishListProps) {
               <ProductQuantityControl
                 cartId={wishList.cartId}
                 productId={product.productDetail.id}
-                currentQuantity={product.quantity}
+                quantity={product.quantity}
+                approvedAmount={product.approvedAmount}
               />
             </div>
           ))}

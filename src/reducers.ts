@@ -27,7 +27,8 @@ function changeQuantityByOne(wishLists: WishList[], action: Action) {
           else
             return {
               ...product,
-              quantity: action.type === ActionType.INCREASE ? product.quantity + 1 : product.quantity - 1
+              approvedAmount:
+                action.type === ActionType.INCREASE ? product.approvedAmount + 1 : product.approvedAmount - 1
             };
         })
       };

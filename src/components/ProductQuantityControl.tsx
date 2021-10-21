@@ -5,10 +5,11 @@ import { ActionType } from "../reducers";
 interface ProductQuantityControlProps {
   cartId: number;
   productId: number;
-  currentQuantity: number;
+  quantity: number;
+  approvedAmount: number;
 }
 
-function ProductQuantityControl({ cartId, productId, currentQuantity }: ProductQuantityControlProps) {
+function ProductQuantityControl({ cartId, productId, quantity, approvedAmount }: ProductQuantityControlProps) {
   const { dispatch } = useContext(WishListsContext);
 
   function increaseQuantity() {
@@ -19,10 +20,11 @@ function ProductQuantityControl({ cartId, productId, currentQuantity }: ProductQ
   }
   return (
     <div>
-      <button disabled={currentQuantity === 0} onClick={decreaseQuantity}>
+      <button disabled={approvedAmount === 0} onClick={decreaseQuantity}>
         -
       </button>
-      {currentQuantity}
+      {/* TODO: consider indicating more than wished amount */}
+      {approvedAmount} / {quantity}
       <button onClick={increaseQuantity}>+</button>
     </div>
   );

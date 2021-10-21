@@ -8,5 +8,6 @@ export default interface WishList {
   products: {
     productDetail: ProductDetail;
     quantity: number;
+    approvedAmount: number;
   }[];
 }
