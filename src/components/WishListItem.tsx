@@ -8,7 +8,7 @@ interface WishListProps {
 }
 
 function WishListItem({ wishList }: WishListProps) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   function toggleOpen() {
     setOpen(!open);
   }
