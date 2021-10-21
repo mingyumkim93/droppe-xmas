@@ -1,11 +1,12 @@
 import React from "react";
+import "./WishListsApproval.css";
 import WishLists from "./WishLists";
 import SideBar from "./SideBar";
 
 function WishListsApproval() {
   return (
     // TODO: make layout
-    <div>
+    <div className="container">
       <WishLists />
       <SideBar />
     </div>

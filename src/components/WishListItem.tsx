@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./WishListItem.css";
 import WishList from "../types/WishList";
 import ProductCard from "./ProductCard";
 import ProductQuantityControl from "./ProductQuantityControl";
@@ -23,7 +24,11 @@ function WishListItem({ wishList }: WishListProps) {
           {wishList.products.map((product) => (
             <div className="content" key={product.productDetail.id}>
               <ProductCard productDetail={product.productDetail} />
-              <ProductQuantityControl />
+              <ProductQuantityControl
+                cartId={wishList.cartId}
+                productId={product.productDetail.id}
+                currentQuantity={product.quantity}
+              />
             </div>
           ))}
         </div>

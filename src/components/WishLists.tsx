@@ -1,16 +1,17 @@
-import React from "react";
-import "./WishListItem.css";
-import WishList from "../types/WishList";
+import React, { useContext } from "react";
+import "./WishLists.css";
 import WishListItem from "./WishListItem";
+import { WishListsContext } from "../App";
 
 function WishLists() {
   //get wishlist from context
   //loop each cart to UI
-  const wishLists: WishList[] = [];
+
+  const { wishLists } = useContext(WishListsContext);
   return (
-    <div>
+    <div className="wish-lists">
       {wishLists.map((wishList) => (
-        <WishListItem wishList={wishList} />
+        <WishListItem wishList={wishList} key={wishList.userId} />
       ))}
     </div>
   );
