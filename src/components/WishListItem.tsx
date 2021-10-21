@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./WishListItem.css";
 import WishList from "../types/WishList";
-import ProductCard from "./ProductCard";
-import ProductQuantityControl from "./ProductQuantityControl";
+import ProductRow from "./ProductRow";
 
 interface WishListProps {
   wishList: WishList;
@@ -19,21 +18,10 @@ function WishListItem({ wishList }: WishListProps) {
       <button className="list" onClick={toggleOpen}>
         {wishList.userFirstName}
       </button>
-      {open && (
-        <div className="content-container">
-          {wishList.products.map((product) => (
-            <div className="content" key={product.productDetail.id}>
-              <ProductCard productDetail={product.productDetail} />
-              <ProductQuantityControl
-                cartId={wishList.cartId}
-                productId={product.productDetail.id}
-                quantity={product.quantity}
-                approvedAmount={product.approvedAmount}
-              />
-            </div>
-          ))}
-        </div>
-      )}
+      {open &&
+        wishList.products.map((product) => (
+          <ProductRow product={product} cartId={wishList.cartId} key={product.productDetail.id} />
+        ))}
     </>
   );
 }
