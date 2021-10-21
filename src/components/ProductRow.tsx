@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { WishListsContext } from "../App";
 import { ActionType } from "../reducers";
 import ProductDetail from "../types/ProductDetail";
+import RatingStars from "./RatingStars";
 import "./ProductRow.css";
 
 interface ProductRowProps {
@@ -32,9 +33,7 @@ function ProductRow({ product, cartId }: ProductRowProps) {
       <img src={product.productDetail.image} alt="product" />
       <div className="wide-section">
         <b>{product.productDetail.title}</b>
-        <p>
-          {product.productDetail.rating.rate}({product.productDetail.rating.count})
-        </p>
+        <RatingStars rating={product.productDetail.rating} />
       </div>
       <div>€{product.productDetail.price}</div>
       <button onClick={() => alert("create product detail dialog!")}>🔍</button>

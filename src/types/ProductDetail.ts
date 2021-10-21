@@ -1,7 +1,4 @@
-interface Rating {
-  rate: number;
-  count: number;
-}
+import Rating from "./Rating";
 
 export default interface ProductDetail {
   id: number;
