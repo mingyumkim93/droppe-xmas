@@ -4,6 +4,7 @@ import { ActionType } from "../reducers";
 import ProductDetail from "../types/ProductDetail";
 import RatingStars from "./RatingStars";
 import "./ProductRow.css";
+import ProductDescription from "./ProductDescription";
 
 interface ProductRowProps {
   product: {
@@ -35,9 +36,11 @@ function ProductRow({ product, cartId }: ProductRowProps) {
         <b>{product.productDetail.title}</b>
         <RatingStars rating={product.productDetail.rating} />
       </div>
-      <div>€{product.productDetail.price}</div>
-      <button onClick={() => alert("create product detail dialog!")}>🔍</button>
-      <div>
+      <div className="wide-section">
+        <ProductDescription description={product.productDetail.description} />
+      </div>
+      <div className="narrow-section">{product.productDetail.price} €/Count</div>
+      <div className="narrow-section">
         <button disabled={product.approvedAmount < 1} onClick={decreaseQuantity} className="control-button">
           -
         </button>

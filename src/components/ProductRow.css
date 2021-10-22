@@ -8,7 +8,12 @@
 }
 
 .wide-section {
-  flex-grow: 6;
+  width: 30%;
+}
+
+.narrow-section {
+  flex-grow: 1;
+  text-align: center;
 }
 
 img {
