@@ -1,0 +1,12 @@
+.cart-price {
+  text-align: right;
+}
+
+.name {
+  display: inline-block;
+  margin-right: 4px;
+}
+
+.name:first-letter {
+  text-transform: capitalize;
+}

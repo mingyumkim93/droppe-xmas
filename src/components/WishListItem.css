@@ -9,6 +9,6 @@
   border: none;
 }
 
-button:first-letter {
+.list:first-letter {
   text-transform: capitalize;
 }
