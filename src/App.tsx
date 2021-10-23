@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, createContext, useReducer } from "react";
-import "./App.css";
 import api from "./api";
+import AppBar from "./components/AppBar";
 import Loading from "./components/Loading";
 import Error from "./components/Error";
 import CartApproval from "./components/WishListsApproval";
@@ -41,6 +41,7 @@ function App() {
   return (
     <WishListsContext.Provider value={{ wishLists, dispatch }}>
       <div className="App">
+        <AppBar />
         {isLoading ? <Loading /> : errorMessage ? <Error message={errorMessage} /> : <CartApproval />}
       </div>
     </WishListsContext.Provider>

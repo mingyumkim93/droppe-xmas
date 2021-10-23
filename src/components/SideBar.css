@@ -1,7 +1,8 @@
 .side-bar {
   width: 300px;
   height: 90vh;
-  top: 0;
+  /* top = app bar's height */
+  top: 48px;
   position: -webkit-sticky;
   position: sticky;
   display: flex;

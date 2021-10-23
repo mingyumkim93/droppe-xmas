@@ -8,3 +8,7 @@
   text-align: left;
   border: none;
 }
+
+button:first-letter {
+  text-transform: capitalize;
+}
