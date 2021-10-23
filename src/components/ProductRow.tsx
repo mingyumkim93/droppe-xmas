@@ -39,7 +39,7 @@ function ProductRow({ product, cartId }: ProductRowProps) {
       <div className="wide-section">
         <ProductDescription description={product.productDetail.description} />
       </div>
-      <div className="narrow-section">{product.productDetail.price} €/Count</div>
+      <div className="narrow-section">{product.productDetail.price.toFixed(2)} €/Count</div>
       <div className="narrow-section">
         <button disabled={product.approvedAmount < 1} onClick={decreaseQuantity} className="control-button">
           -

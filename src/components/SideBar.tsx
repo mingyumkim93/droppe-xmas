@@ -45,10 +45,13 @@ function SideBar() {
     return trimNumber(totalDiscount);
   }, [approvedProductList]);
 
-  const finalPrice = useMemo(() => trimNumber(totalSum - totalDiscount), [totalSum, totalDiscount]);
+  const finalPrice = useMemo(
+    () => trimNumber(parseFloat(totalSum) - parseFloat(totalDiscount)),
+    [totalSum, totalDiscount]
+  );
 
   function trimNumber(number: number) {
-    return Math.round(100 * number) / 100;
+    return (Math.round(100 * number) / 100).toFixed(2);
   }
 
   return (
@@ -68,7 +71,7 @@ function SideBar() {
                     </span>
                   ) : (
                     <span>
-                      <b>{product.price * product.quantity}€</b>
+                      <b>{trimNumber(product.price * product.quantity)}€</b>
                     </span>
                   )}
                 </div>
