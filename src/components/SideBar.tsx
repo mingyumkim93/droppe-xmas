@@ -55,31 +55,31 @@ function SideBar() {
   }
 
   return (
-    <div>
-      <div className="side-bar">
-        <div className="product-list">
-          <h4>List of products</h4>
-          <ol>
-            {approvedProductList.map((product) => (
-              <li key={product.id}>
-                {product.title} X {product.quantity}
-                <div>
-                  {product.quantity > 1 ? (
-                    <span>
-                      <span className="before-discount">{trimNumber(product.price * product.quantity)}</span>
-                      <b> {trimNumber(product.price * product.quantity - (product.price / 10) * product.quantity)}€</b>
-                    </span>
-                  ) : (
-                    <span>
-                      <b>{trimNumber(product.price * product.quantity)}€</b>
-                    </span>
-                  )}
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
+    <div className="side-bar">
+      <div className="side-bar-top">
+        <h4>List of products</h4>
+        <ol>
+          {approvedProductList.map((product) => (
+            <li key={product.id}>
+              {product.title} X {product.quantity}
+              <div>
+                {product.quantity > 1 ? (
+                  <span>
+                    <span className="before-discount">{trimNumber(product.price * product.quantity)}</span>
+                    <b> {trimNumber(product.price * product.quantity - (product.price / 10) * product.quantity)}€</b>
+                  </span>
+                ) : (
+                  <span>
+                    <b>{trimNumber(product.price * product.quantity)}€</b>
+                  </span>
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
 
+      <div className="side-bar-bottom">
         <ul>
           <li>
             <b>Total sum: {totalSum}€</b>
@@ -90,8 +90,8 @@ function SideBar() {
           <li>
             <b>Final price: {finalPrice}€</b>
           </li>
-          <button className="button-buy">Buy</button>
         </ul>
+        <button className="button-buy">Buy</button>
       </div>
     </div>
   );
