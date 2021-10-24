@@ -65,12 +65,13 @@ function SideBar() {
               <div>
                 {product.quantity > 1 ? (
                   <span>
-                    <span className="before-discount">{trimNumber(product.price * product.quantity)}</span>
-                    <b> {trimNumber(product.price * product.quantity - (product.price / 10) * product.quantity)}€</b>
+                    <span className="before-discount">{trimNumber(product.price * product.quantity)} €</span>
+                    <span className="discount-amount"> (-{trimNumber((product.price / 10) * product.quantity)} €)</span>
+                    <b> {trimNumber(product.price * product.quantity - (product.price / 10) * product.quantity)} €</b>
                   </span>
                 ) : (
                   <span>
-                    <b>{trimNumber(product.price * product.quantity)}€</b>
+                    <b>{trimNumber(product.price * product.quantity)} €</b>
                   </span>
                 )}
               </div>

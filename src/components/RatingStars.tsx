@@ -9,8 +9,6 @@ interface RatingProps {
 function RatingStars({ rating }: RatingProps) {
   return (
     <div>
-      {/* {rating.rate}({rating.count})
-       */}
       <div className="ratings">
         <div className="empty-stars">
           <div className="full-stars" style={{ width: (rating.rate / 5) * 100 + "%" }}></div>
