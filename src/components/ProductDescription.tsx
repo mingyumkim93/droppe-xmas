@@ -12,9 +12,9 @@ function ProductDescription({ description }: ProductDescriptionProps) {
   }
 
   return (
-    <div>
+    <div className="product-description">
       {readMore ? description.slice(0, 100) : description}
-      <span onClick={toggleReadMore} className="read-or-hide">
+      <span onClick={toggleReadMore} className="read-more-or-less">
         {description.length > 100 ? (readMore ? " ...read more" : " show less") : ""}
       </span>
     </div>
