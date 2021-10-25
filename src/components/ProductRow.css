@@ -23,6 +23,10 @@ img {
   width: 100px;
 }
 
+.before-discount {
+  text-decoration: line-through;
+}
+
 .control-button {
   margin: 4px;
 }

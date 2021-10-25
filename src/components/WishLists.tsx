@@ -4,9 +4,6 @@ import WishListItem from "./WishListItem";
 import { WishListsContext } from "../App";
 
 function WishLists() {
-  //get wishlist from context
-  //loop each cart to UI
-
   const { wishLists } = useContext(WishListsContext);
   return (
     <div className="wish-lists">

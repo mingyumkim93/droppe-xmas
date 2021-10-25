@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useMemo } from "react";
 import { WishListsContext } from "../App";
 import { ActionType } from "../reducers";
 import ProductDetail from "../types/ProductDetail";
 import RatingStars from "./RatingStars";
+import { trimNumber } from "../utils/MathUtils";
 import "./ProductRow.css";
 import ProductDescription from "./ProductDescription";
+import { getTotalApprovedNumberByProductId } from "../utils/WishlistUtils";
 
 interface ProductRowProps {
   product: {
@@ -16,11 +18,16 @@ interface ProductRowProps {
 }
 
 function ProductRow({ product, cartId }: ProductRowProps) {
-  const { dispatch } = useContext(WishListsContext);
+  const { wishLists, dispatch } = useContext(WishListsContext);
+  const totalApprovedNumber = useMemo(
+    () => getTotalApprovedNumberByProductId(wishLists, product.productDetail.id),
+    [wishLists, product]
+  );
 
   function increaseQuantity() {
     dispatch({ type: ActionType.INCREASE, payload: { cartId, productId: product.productDetail.id } });
   }
+
   function decreaseQuantity() {
     dispatch({ type: ActionType.DECREASE, payload: { cartId, productId: product.productDetail.id } });
   }
@@ -41,13 +48,29 @@ function ProductRow({ product, cartId }: ProductRowProps) {
       </div>
       <div className="narrow-section">{product.productDetail.price.toFixed(2)} €/Count</div>
       <div className="narrow-section">
-        <button disabled={product.approvedAmount < 1} onClick={decreaseQuantity} className="control-button">
-          -
-        </button>
-        {product.approvedAmount} / {product.quantity}
-        <button onClick={increaseQuantity} className="control-button">
-          +
-        </button>
+        <div>
+          <button disabled={product.approvedAmount < 1} onClick={decreaseQuantity} className="control-button">
+            -
+          </button>
+          {product.approvedAmount} / {product.quantity}
+          <button onClick={increaseQuantity} className="control-button">
+            +
+          </button>
+        </div>
+        <div>
+          {product.approvedAmount === 0 ? (
+            <b>{trimNumber(product.productDetail.price * product.approvedAmount) + " €"}</b>
+          ) : totalApprovedNumber > 1 ? (
+            <div>
+              <span className="before-discount">
+                {trimNumber(product.productDetail.price * product.approvedAmount) + " €"}
+              </span>
+              <b> {trimNumber(product.productDetail.price * product.approvedAmount * 0.9) + " €"}</b>
+            </div>
+          ) : (
+            <b>{trimNumber(product.productDetail.price * product.approvedAmount) + " €"}</b>
+          )}
+        </div>
       </div>
     </div>
   );

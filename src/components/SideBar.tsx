@@ -1,99 +1,37 @@
 import React, { useContext, useMemo } from "react";
 import { WishListsContext } from "../App";
+import { trimNumber } from "../utils/MathUtils";
+import { getApprovedNumberSum, getTotalDiscount, getTotalPriceBeforeDiscount } from "../utils/WishlistUtils";
 import "./SideBar.css";
 
 function SideBar() {
   const { wishLists } = useContext(WishListsContext);
-  const approvedProductList = useMemo(() => {
-    let approvedProductList: { id: number; title: string; quantity: number; price: number }[] = [];
-    wishLists.forEach((wishList) => {
-      wishList.products.forEach((product) => {
-        const existingItem = approvedProductList.find((item) => item.id === product.productDetail.id);
-        if (existingItem) {
-          const index = approvedProductList.findIndex((item) => item.id === product.productDetail.id);
-          approvedProductList[index] = {
-            ...approvedProductList[index],
-            quantity: approvedProductList[index].quantity + product.approvedAmount
-          };
-        } else if (product.approvedAmount > 0)
-          approvedProductList.push({
-            id: product.productDetail.id,
-            title: product.productDetail.title,
-            quantity: product.approvedAmount,
-            price: product.productDetail.price
-          });
-      });
-    });
-    return approvedProductList;
-  }, [wishLists]);
-
-  const totalSum = useMemo(() => {
-    let totalSum = 0;
-    wishLists.forEach((wishList) => {
-      wishList.products.forEach((product) => {
-        totalSum += product.productDetail.price * product.approvedAmount;
-      });
-    });
-    return trimNumber(totalSum);
-  }, [wishLists]);
-
-  const totalDiscount = useMemo(() => {
-    let totalDiscount = 0;
-    approvedProductList.forEach((product) => {
-      if (product.quantity > 1) totalDiscount += product.quantity * (product.price / 10);
-    });
-    return trimNumber(totalDiscount);
-  }, [approvedProductList]);
-
+  const totalItemNum = useMemo(() => getApprovedNumberSum(wishLists), [wishLists]);
+  const totalBeforeDiscount = useMemo(() => getTotalPriceBeforeDiscount(wishLists), [wishLists]);
+  const totalDiscount = useMemo(() => getTotalDiscount(wishLists), [wishLists]);
   const finalPrice = useMemo(
-    () => trimNumber(parseFloat(totalSum) - parseFloat(totalDiscount)),
-    [totalSum, totalDiscount]
+    () => trimNumber(parseFloat(totalBeforeDiscount) - parseFloat(totalDiscount)),
+    [totalBeforeDiscount, totalDiscount]
   );
-
-  function trimNumber(number: number) {
-    return (Math.round(100 * number) / 100).toFixed(2);
-  }
 
   return (
     <div className="side-bar">
-      <div className="side-bar-top">
-        <h4>List of products</h4>
-        <ol>
-          {approvedProductList.map((product) => (
-            <li key={product.id}>
-              {product.title} X {product.quantity}
-              <div>
-                {product.quantity > 1 ? (
-                  <span>
-                    <span className="before-discount">{trimNumber(product.price * product.quantity)} €</span>
-                    <span className="discount-amount"> (-{trimNumber((product.price / 10) * product.quantity)} €)</span>
-                    <b> {trimNumber(product.price * product.quantity - (product.price / 10) * product.quantity)} €</b>
-                  </span>
-                ) : (
-                  <span>
-                    <b>{trimNumber(product.price * product.quantity)} €</b>
-                  </span>
-                )}
-              </div>
-            </li>
-          ))}
-        </ol>
+      <h4>Order summary</h4>
+      <div>
+        <div>Total of {totalItemNum} products</div>
+        <div>
+          <div>
+            Total price: <b>{totalBeforeDiscount} €</b>
+          </div>
+          <div>
+            Discount: <b>{totalDiscount} €</b>
+          </div>
+          <div>
+            Final price: <b>{finalPrice} €</b>
+          </div>
+        </div>
       </div>
-
-      <div className="side-bar-bottom">
-        <ul>
-          <li>
-            <b>Total sum: {totalSum}€</b>
-          </li>
-          <li>
-            <b>Discount: {totalDiscount}€</b>
-          </li>
-          <li>
-            <b>Final price: {finalPrice}€</b>
-          </li>
-        </ul>
-        <button className="button-buy">Buy</button>
-      </div>
+      <button>Proceed</button>
     </div>
   );
 }
