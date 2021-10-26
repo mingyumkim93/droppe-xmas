@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from "react";
 import { WishListsContext } from "../App";
-import { ActionType } from "../reducers";
+import { WishListsActionType } from "../reducers";
 import ProductDetail from "../types/ProductDetail";
 import RatingStars from "./RatingStars";
 import { trimNumber } from "../utils/MathUtils";
@@ -18,18 +18,18 @@ interface ProductRowProps {
 }
 
 function ProductRow({ product, cartId }: ProductRowProps) {
-  const { wishLists, dispatch } = useContext(WishListsContext);
+  const { wishLists, wishListsDispatch } = useContext(WishListsContext);
   const totalApprovedNumber = useMemo(
     () => getTotalApprovedNumberByProductId(wishLists, product.productDetail.id),
     [wishLists, product]
   );
 
   function increaseQuantity() {
-    dispatch({ type: ActionType.INCREASE, payload: { cartId, productId: product.productDetail.id } });
+    wishListsDispatch({ type: WishListsActionType.INCREASE, payload: { cartId, productId: product.productDetail.id } });
   }
 
   function decreaseQuantity() {
-    dispatch({ type: ActionType.DECREASE, payload: { cartId, productId: product.productDetail.id } });
+    wishListsDispatch({ type: WishListsActionType.DECREASE, payload: { cartId, productId: product.productDetail.id } });
   }
 
   return (

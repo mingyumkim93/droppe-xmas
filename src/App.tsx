@@ -1,50 +1,47 @@
-import React, { useState, useEffect, useCallback, createContext, useReducer } from "react";
-import api from "./api";
+import React, { createContext, useReducer } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AppBar from "./components/AppBar";
-import Loading from "./components/Loading";
-import Error from "./components/Error";
-import CartApproval from "./components/WishListsApproval";
+import WishListsApproval from "./pages/WishListsApproval";
+import Summary from "./pages/Summary";
 import WishList from "./types/WishList";
-import { WishListsReducer, Action, ActionType } from "./reducers";
+import { wishListsReducer, WishListsAction, StageAction, stageReducer, Stages } from "./reducers";
 
-const emptyWishLists: WishList[] = [];
-export const WishListsContext = createContext<{ wishLists: WishList[]; dispatch: React.Dispatch<Action> }>({
-  wishLists: emptyWishLists,
-  dispatch: () => null
+export const WishListsContext = createContext<{
+  wishLists: WishList[];
+  wishListsDispatch: React.Dispatch<WishListsAction>;
+}>({
+  wishLists: [],
+  wishListsDispatch: () => null
+});
+
+export const stageContext = createContext<{ stage: number; stageDispatch: React.Dispatch<StageAction> }>({
+  stage: Stages.APPROVAL,
+  stageDispatch: () => null
 });
 
 function App() {
   //necessary assumption: fetch all carts will return carts from the user's 5 children.
-  const [isLoading, setIsLoading] = useState(true);
-  const [wishLists, dispatch] = useReducer(WishListsReducer, []);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-
-  const fetchWishLists = useCallback(async () => {
-    try {
-      //TODO: put wishLists into context
-      const wishLists = await api.getWishLists();
-      dispatch({
-        type: ActionType.SET,
-        payload: { wishLists }
-      });
-      setIsLoading(false);
-    } catch (e) {
-      setErrorMessage("Something went wrong! Please try later.");
-      setIsLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchWishLists();
-  }, [fetchWishLists]);
+  const [wishLists, wishListsDispatch] = useReducer(wishListsReducer, []);
+  const [stage, stageDispatch] = useReducer(stageReducer, 1);
 
   return (
-    <WishListsContext.Provider value={{ wishLists, dispatch }}>
-      <div className="App">
-        <AppBar />
-        {isLoading ? <Loading /> : errorMessage ? <Error message={errorMessage} /> : <CartApproval />}
-      </div>
-    </WishListsContext.Provider>
+    <div className="App">
+      <WishListsContext.Provider value={{ wishLists, wishListsDispatch }}>
+        <stageContext.Provider value={{ stage, stageDispatch }}>
+          <AppBar />
+          <Router>
+            <Switch>
+              <Route path="/summary">
+                <Summary />
+              </Route>
+              <Route exact path="/">
+                <WishListsApproval />
+              </Route>
+            </Switch>
+          </Router>
+        </stageContext.Provider>
+      </WishListsContext.Provider>
+    </div>
   );
 }
 

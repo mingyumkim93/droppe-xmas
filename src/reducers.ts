@@ -1,14 +1,14 @@
 import React from "react";
 import WishList from "./types/WishList";
 
-export enum ActionType {
+export enum WishListsActionType {
   SET = "set",
   INCREASE = "increase",
   DECREASE = "decrease"
 }
 
-export interface Action {
-  type: ActionType;
+export interface WishListsAction {
+  type: WishListsActionType;
   payload: {
     cartId?: number;
     productId?: number;
@@ -16,7 +16,7 @@ export interface Action {
   };
 }
 
-function changeQuantityByOne(wishLists: WishList[], action: Action) {
+function changeQuantityByOne(wishLists: WishList[], action: WishListsAction) {
   return wishLists.map((wishList) => {
     if (wishList.cartId !== action.payload.cartId) return wishList;
     else {
@@ -28,7 +28,7 @@ function changeQuantityByOne(wishLists: WishList[], action: Action) {
             return {
               ...product,
               approvedAmount:
-                action.type === ActionType.INCREASE ? product.approvedAmount + 1 : product.approvedAmount - 1
+                action.type === WishListsActionType.INCREASE ? product.approvedAmount + 1 : product.approvedAmount - 1
             };
         })
       };
@@ -36,16 +36,41 @@ function changeQuantityByOne(wishLists: WishList[], action: Action) {
   });
 }
 
-export const WishListsReducer: React.Reducer<WishList[], Action> = (state, action) => {
+export const wishListsReducer: React.Reducer<WishList[], WishListsAction> = (state, action) => {
   switch (action.type) {
-    case ActionType.SET:
+    case WishListsActionType.SET:
       return action.payload.wishLists ? action.payload.wishLists : state;
-    case ActionType.INCREASE: {
+    case WishListsActionType.INCREASE: {
       return changeQuantityByOne(state, action);
     }
-    case ActionType.DECREASE:
+    case WishListsActionType.DECREASE:
       return changeQuantityByOne(state, action);
     default:
       return state;
+  }
+};
+
+export enum StageActionType {
+  SET = "set"
+}
+
+export enum Stages {
+  APPROVAL = 1,
+  SUMMARY = 2
+}
+
+export interface StageAction {
+  type: StageActionType;
+  payload: {
+    newStage: number;
+  };
+}
+
+export const stageReducer: React.Reducer<number, StageAction> = (state, action) => {
+  switch (action.type) {
+    case StageActionType.SET:
+      return action.payload.newStage;
+    default:
+      return action.payload.newStage;
   }
 };
