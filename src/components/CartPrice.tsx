@@ -24,7 +24,7 @@ function CartPrice({ wishList }: CardPriceProps) {
   return (
     <div className="cart-price">
       <div className="name">Total price for {wishList.userFirstName}: </div>
-      <b>{trimNumber(price)}€</b>
+      <b>{trimNumber(price)} €</b>
     </div>
   );
 }

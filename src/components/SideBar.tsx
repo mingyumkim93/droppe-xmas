@@ -1,11 +1,13 @@
-import React, { useContext, useMemo } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import { WishListsContext } from "../App";
 import { trimNumber } from "../utils/MathUtils";
 import { getApprovedNumberSum, getTotalDiscount, getTotalPriceBeforeDiscount } from "../utils/WishlistUtils";
 import "./SideBar.css";
+import CheckOutModal from "./CheckOutModal";
 
 function SideBar() {
   const { wishLists } = useContext(WishListsContext);
+  const [modalOpen, setModalOpen] = useState(false);
   const totalItemNum = useMemo(() => getApprovedNumberSum(wishLists), [wishLists]);
   const totalBeforeDiscount = useMemo(() => getTotalPriceBeforeDiscount(wishLists), [wishLists]);
   const totalDiscount = useMemo(() => getTotalDiscount(wishLists), [wishLists]);
@@ -13,6 +15,14 @@ function SideBar() {
     () => trimNumber(parseFloat(totalBeforeDiscount) - parseFloat(totalDiscount)),
     [totalBeforeDiscount, totalDiscount]
   );
+
+  function openModal() {
+    setModalOpen(true);
+  }
+
+  function closeModal() {
+    setModalOpen(false);
+  }
 
   return (
     <div className="side-bar">
@@ -31,7 +41,8 @@ function SideBar() {
           </div>
         </div>
       </div>
-      <button>Proceed</button>
+      <button onClick={openModal}>Check out</button>
+      {modalOpen && <CheckOutModal closeModal={closeModal} />}
     </div>
   );
 }
