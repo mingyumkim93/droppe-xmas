@@ -32,7 +32,7 @@ function WishListsApproval() {
   }, [fetchWishLists]);
 
   return (
-    <div className="container">
+    <div className="page-container">
       {isLoading ? (
         <Loading />
       ) : errorMessage ? (

@@ -38,7 +38,7 @@ function ProductRow({ product, cartId }: ProductRowProps) {
       style={{ display: "flex", alignItems: "center", borderBottom: "1px solid black" }}
       className="product-container"
     >
-      <img src={product.productDetail.image} alt="product" />
+      <img className="product-img" src={product.productDetail.image} alt="product" />
       <div className="wide-section">
         <b>{product.productDetail.title}</b>
         <RatingStars rating={product.productDetail.rating} />

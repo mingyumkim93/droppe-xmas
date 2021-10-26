@@ -16,7 +16,7 @@ function WishListItem({ wishList }: WishListProps) {
 
   return (
     <>
-      <button className="list" onClick={toggleOpen}>
+      <button className="list first-letter-capitalize" onClick={toggleOpen}>
         {wishList.userFirstName}
       </button>
       {open && (

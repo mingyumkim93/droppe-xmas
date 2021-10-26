@@ -6,7 +6,3 @@
 .read-more-or-less:hover {
   text-decoration: underline;
 }
-
-.product-description:first-letter {
-  text-transform: capitalize;
-}
