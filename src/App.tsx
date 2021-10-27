@@ -28,8 +28,8 @@ function App() {
     <div className="App">
       <WishListsContext.Provider value={{ wishLists, wishListsDispatch }}>
         <stageContext.Provider value={{ stage, stageDispatch }}>
-          <AppBar />
           <Router>
+            <AppBar />
             <Switch>
               <Route path="/summary">
                 <Summary />

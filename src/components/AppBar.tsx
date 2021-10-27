@@ -1,10 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./AppBar.css";
 
 function AppBar() {
   return (
     <div className="app-bar">
-      <h3>Droppe-XMAS</h3>
+      <Link to="/">
+        <h3>Droppe-XMAS</h3>
+      </Link>
     </div>
   );
 }

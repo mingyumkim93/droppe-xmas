@@ -24,11 +24,11 @@ function CheckOutModal({ closeModal }: CheckOutModalProps) {
           <h3>Confirmation</h3>
         </div>
         <div className="modal-contents">
-          <div>Save change?</div>
+          <div>Your selection of products are about to be saved. Proceed?</div>
         </div>
         <div className="modal-actions">
           <button onClick={closeModal}>Cancel</button>
-          <button onClick={handleCheckOut}>Yes</button>
+          <button onClick={handleCheckOut}>Proceed</button>
         </div>
       </div>
     </div>

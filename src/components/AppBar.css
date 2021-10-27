@@ -10,6 +10,8 @@
   z-index: 1;
 }
 
-.app-bar > h3 {
+.app-bar > a {
+  text-decoration: none;
+  color: white;
   margin: 0px 8px;
 }

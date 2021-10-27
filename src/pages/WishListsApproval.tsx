@@ -7,15 +7,22 @@ import Error from "../components/Error";
 import { WishListsContext } from "../App";
 import api from "../api";
 import { WishListsActionType } from "../reducers";
+import { getProductIdsFromCarts, createWishLists } from "../utils/WishlistUtils";
 
 function WishListsApproval() {
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const { wishListsDispatch } = useContext(WishListsContext);
 
-  const fetchWishLists = useCallback(async () => {
+  const getWishLists = useCallback(async () => {
     try {
-      const wishLists = await api.getWishLists();
+      const carts = await api.fetchCarts();
+      const userIds = carts.map((cart) => cart.userId);
+      const productIds = getProductIdsFromCarts(carts);
+      const products = await api.fetchProductsByIds(productIds);
+      const users = await api.fetchUsersByIds(userIds);
+      const wishLists = createWishLists(carts, users, products);
+
       wishListsDispatch({
         type: WishListsActionType.SET,
         payload: { wishLists }
@@ -28,8 +35,8 @@ function WishListsApproval() {
   }, [wishListsDispatch]);
 
   useEffect(() => {
-    fetchWishLists();
-  }, [fetchWishLists]);
+    getWishLists();
+  }, [getWishLists]);
 
   return (
     <div className="page-container">
