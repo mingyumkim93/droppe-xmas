@@ -5,7 +5,7 @@ import ProductDetail from "../types/ProductDetail";
 import User from "../types/User";
 import { getLatestCartPerChild } from "../utils/WishlistUtils";
 
-const BASE_URL = "http://fakestoreapi.com/";
+const BASE_URL = "https://fakestoreapi.com/";
 
 async function fetchProductsByIds(ids: number[]) {
   const productFetchCalls = ids.map((id) => {
