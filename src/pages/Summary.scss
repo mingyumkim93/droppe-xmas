@@ -10,8 +10,12 @@
 }
 
 .product-summary > * {
+  background-color: white;
+  padding: 8px;
+  border-radius: 8px;
   min-width: 50%;
   align-self: center;
+  margin-bottom: 16px;
 }
 
 .cost-summary {

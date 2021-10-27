@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { stageContext } from "../App";
 import { StageActionType, Stages } from "../reducers";
 import { useHistory } from "react-router";
-import "./CheckOutModal.css";
+import "./CheckOutModal.scss";
 
 interface CheckOutModalProps {
   closeModal: () => void;

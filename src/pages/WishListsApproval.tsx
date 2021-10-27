@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect, useContext } from "react";
-import "./WishListsApproval.css";
+import "./WishListsApproval.scss";
 import WishLists from "../components/WishLists";
 import SideBar from "../components/SideBar";
 import Loading from "../components/Loading";

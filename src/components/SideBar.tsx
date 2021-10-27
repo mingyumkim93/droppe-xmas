@@ -6,7 +6,7 @@ import {
   getTotalDiscount,
   getTotalPriceBeforeDiscount
 } from "../utils/WishlistUtils";
-import "./SideBar.css";
+import "./SideBar.scss";
 import CheckOutModal from "./CheckOutModal";
 
 function SideBar() {

@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
-import "./Summary.css";
+import "./Summary.scss";
 import { useHistory } from "react-router";
 import { stageContext, WishListsContext } from "../App";
 import { Stages } from "../reducers";

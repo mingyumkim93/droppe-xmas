@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./WishListItem.css";
+import "./WishListItem.scss";
 import WishList from "../types/WishList";
 import ProductRow from "./ProductRow";
 import CartPrice from "./CartPrice";
@@ -20,7 +20,7 @@ function WishListItem({ wishList }: WishListProps) {
         {wishList.userFirstName}
       </button>
       {open && (
-        <div>
+        <div className="expanded-wish-list">
           {wishList.products.map((product) => (
             <ProductRow product={product} cartId={wishList.cartId} key={product.productDetail.id} />
           ))}

@@ -15,7 +15,7 @@
 }
 
 .narrow-section {
-  flex-grow: 1;
+  width: 15%;
   text-align: center;
 }
 
@@ -39,5 +39,9 @@
   .wide-section {
     width: 100%;
     align-items: center;
+  }
+
+  .narrow-section {
+    width: 100%;
   }
 }

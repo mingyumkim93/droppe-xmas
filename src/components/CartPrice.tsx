@@ -2,7 +2,7 @@ import React, { useContext, useMemo } from "react";
 import { WishListsContext } from "../App";
 import WishList from "../types/WishList";
 import { getCartPrice } from "../utils/WishlistUtils";
-import "./CartPrice.css";
+import "./CartPrice.scss";
 
 interface CardPriceProps {
   wishList: WishList;

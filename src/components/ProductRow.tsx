@@ -4,7 +4,7 @@ import { WishListsActionType } from "../reducers";
 import ProductDetail from "../types/ProductDetail";
 import RatingStars from "./RatingStars";
 import { trimNumber } from "../utils/MathUtils";
-import "./ProductRow.css";
+import "./ProductRow.scss";
 import ProductDescription from "./ProductDescription";
 import { getTotalApprovedNumberByProductId } from "../utils/WishlistUtils";
 

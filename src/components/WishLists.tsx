@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "./WishLists.css";
+import "./WishLists.scss";
 import WishListItem from "./WishListItem";
 import { WishListsContext } from "../App";
 

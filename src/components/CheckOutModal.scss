@@ -1,3 +1,5 @@
+@import "../colors";
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -24,10 +26,12 @@
   display: flex;
   flex-direction: column;
   border: 1px solid black;
+  border-radius: 8px;
 }
 
 .modal-contents {
   padding: 8px;
+  white-space: pre-wrap;
   flex-grow: 1;
 }
 

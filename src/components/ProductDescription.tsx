@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./ProductDescription.css";
+import "./ProductDescription.scss";
 
 interface ProductDescriptionProps {
   description: string;

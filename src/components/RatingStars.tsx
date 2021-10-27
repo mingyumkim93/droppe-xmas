@@ -1,6 +1,6 @@
 import React from "react";
 import Rating from "../types/Rating";
-import "./RatingStars.css";
+import "./RatingStars.scss";
 
 interface RatingProps {
   rating: Rating;

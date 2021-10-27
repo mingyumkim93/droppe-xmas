@@ -5,6 +5,7 @@ import WishListsApproval from "./pages/WishListsApproval";
 import Summary from "./pages/Summary";
 import WishList from "./types/WishList";
 import { wishListsReducer, WishListsAction, StageAction, stageReducer, Stages } from "./reducers";
+import "./App.scss";
 
 export const WishListsContext = createContext<{
   wishLists: WishList[];
@@ -25,7 +26,7 @@ function App() {
   const [stage, stageDispatch] = useReducer(stageReducer, 1);
 
   return (
-    <div className="App">
+    <div className="app">
       <WishListsContext.Provider value={{ wishLists, wishListsDispatch }}>
         <stageContext.Provider value={{ stage, stageDispatch }}>
           <Router>

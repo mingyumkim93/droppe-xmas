@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./AppBar.css";
+import "./AppBar.scss";
 
 function AppBar() {
   return (
