@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { stageContext } from "../App";
-import { StageActionType, Stages } from "../reducers";
+import { StageActionType, Stages } from "../reducers/stageReducer";
 import { useHistory } from "react-router";
 import "./CheckOutModal.scss";
 

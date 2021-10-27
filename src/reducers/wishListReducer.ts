@@ -1,5 +1,4 @@
-import React from "react";
-import WishList from "./types/WishList";
+import WishList from "../types/WishList";
 
 export enum WishListsActionType {
   SET = "set",
@@ -47,30 +46,5 @@ export const wishListsReducer: React.Reducer<WishList[], WishListsAction> = (sta
       return changeQuantityByOne(state, action);
     default:
       return state;
-  }
-};
-
-export enum StageActionType {
-  SET = "set"
-}
-
-export enum Stages {
-  APPROVAL = 1,
-  SUMMARY = 2
-}
-
-export interface StageAction {
-  type: StageActionType;
-  payload: {
-    newStage: number;
-  };
-}
-
-export const stageReducer: React.Reducer<number, StageAction> = (state, action) => {
-  switch (action.type) {
-    case StageActionType.SET:
-      return action.payload.newStage;
-    default:
-      return action.payload.newStage;
   }
 };

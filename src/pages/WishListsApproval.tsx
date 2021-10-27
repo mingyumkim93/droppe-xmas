@@ -6,7 +6,7 @@ import Loading from "../components/Loading";
 import Error from "../components/Error";
 import { WishListsContext } from "../App";
 import api from "../api";
-import { WishListsActionType } from "../reducers";
+import { WishListsActionType } from "../reducers/wishListReducer";
 import { getProductIdsFromCarts, createWishLists } from "../utils/WishlistUtils";
 
 function WishListsApproval() {

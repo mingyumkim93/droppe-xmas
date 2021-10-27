@@ -4,7 +4,8 @@ import AppBar from "./components/AppBar";
 import WishListsApproval from "./pages/WishListsApproval";
 import Summary from "./pages/Summary";
 import WishList from "./types/WishList";
-import { wishListsReducer, WishListsAction, StageAction, stageReducer, Stages } from "./reducers";
+import { wishListsReducer, WishListsAction } from "./reducers/wishListReducer";
+import { StageAction, stageReducer, Stages } from "./reducers/stageReducer";
 import "./App.scss";
 
 export const WishListsContext = createContext<{
