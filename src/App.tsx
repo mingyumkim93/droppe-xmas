@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useEffect, useReducer } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AppBar from "./components/AppBar";
 import WishListsApproval from "./pages/WishListsApproval";
@@ -22,6 +22,10 @@ export const stageContext = createContext<{ stage: number; stageDispatch: React.
 });
 
 function App() {
+  useEffect(() => {
+    document.title = "Droppe-XMAS";
+  }, []);
+
   //necessary assumption: fetch all carts will return carts from the user's 5 children.
   const [wishLists, wishListsDispatch] = useReducer(wishListsReducer, []);
   const [stage, stageDispatch] = useReducer(stageReducer, 1);
