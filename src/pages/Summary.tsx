@@ -23,9 +23,9 @@ function Summary() {
     try {
       await api.postCarts(selectedWishLists);
       await api.postCarts(discardedWishLists);
-      setIsLoading(false);
     } catch (e) {
       setErrorMessage("Something went wrong! Please try later.");
+    } finally {
       setIsLoading(false);
     }
   }, [wishLists]);

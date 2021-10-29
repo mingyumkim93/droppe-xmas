@@ -26,9 +26,9 @@ function WishListsApproval() {
         type: WishListsActionType.SET,
         payload: { wishLists }
       });
-      setIsLoading(false);
     } catch (e) {
       setErrorMessage("Something went wrong! Please try later.");
+    } finally {
       setIsLoading(false);
     }
   }, [wishListsDispatch]);
