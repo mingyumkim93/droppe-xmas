@@ -6,7 +6,7 @@ import { WishListsContext } from "../App";
 function WishLists() {
   const { wishLists } = useContext(WishListsContext);
   return (
-    <div className="wish-lists">
+    <div data-testid="wish-lists" className="wish-lists">
       {wishLists.map((wishList) => (
         <WishListItem wishList={wishList} key={wishList.userId} />
       ))}
