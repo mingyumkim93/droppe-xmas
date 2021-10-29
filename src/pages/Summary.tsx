@@ -1,5 +1,6 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import "./Summary.scss";
+import api from "../api";
 import { useHistory } from "react-router";
 import { stageContext, WishListsContext } from "../App";
 import { Stages } from "../reducers/stageReducer";
@@ -8,7 +9,6 @@ import DiscardedWishSummary from "../components/DiscardedWishSummary";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
 import { createSelectedItemsCarts, createDiscardedItemsCarts } from "../utils/WishlistUtils";
-import api from "../api";
 
 function Summary() {
   const [isLoading, setIsLoading] = useState(true);
@@ -45,7 +45,7 @@ function Summary() {
         <Error message={errorMessage} />
       ) : (
         <div className="summary-container">
-          <h2>Your change is saved!</h2>
+          <h2 className="summary-title">Thank you for your approval!</h2>
           <div className="product-summary">
             <SelectedWishSummary />
             <DiscardedWishSummary />

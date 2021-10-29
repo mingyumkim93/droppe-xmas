@@ -1,7 +1,7 @@
 import React from "react";
+import "./ProductRow.scss";
 import ProductDetail from "../types/ProductDetail";
 import RatingStars from "./RatingStars";
-import "./ProductRow.scss";
 import ProductDescription from "./ProductDescription";
 import ProductAmountControls from "./ProductAmountControls";
 import ProductAmountPrice from "./ProductAmountPrice";

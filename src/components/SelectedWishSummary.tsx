@@ -17,7 +17,7 @@ function SelectedWishSummary() {
 
   return (
     <div>
-      <h2>Selected</h2>
+      <h2>Approved items</h2>
       {selectedWishLists.length > 0 ? (
         <div>
           {selectedWishLists.map((wishList) => (

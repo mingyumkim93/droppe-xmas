@@ -1,6 +1,6 @@
 import Product from "./Product";
 
-export interface CartBody {
+export default interface CartBody {
   userId: number;
   date: Date;
   products: Product[];

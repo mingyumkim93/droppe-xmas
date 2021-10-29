@@ -1,6 +1,6 @@
 import axios from "axios";
 import Cart from "../types/Cart";
-import { CartBody } from "../types/CartBody";
+import CartBody from "../types/CartBody";
 import ProductDetail from "../types/ProductDetail";
 import User from "../types/User";
 import { getLatestCartPerChild } from "../utils/WishlistUtils";

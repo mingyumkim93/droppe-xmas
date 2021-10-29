@@ -8,7 +8,7 @@ function DiscardedWishSummary() {
 
   return (
     <div>
-      <h2>Discarded</h2>
+      <h2>Discarded items</h2>
       {discardedWishLists.length > 0 ? (
         <div>
           {discardedWishLists.map((wishList) => (
