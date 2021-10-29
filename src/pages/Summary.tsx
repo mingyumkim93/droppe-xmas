@@ -1,14 +1,14 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import "./Summary.scss";
-import api from "../api";
+import api from "api";
 import { useHistory } from "react-router";
-import { stageContext, WishListsContext } from "../App";
-import { Stages } from "../reducers/stageReducer";
-import SelectedWishSummary from "../components/SelectedWishSummary";
-import DiscardedWishSummary from "../components/DiscardedWishSummary";
-import Loading from "../components/Loading";
-import Error from "../components/Error";
-import { createSelectedItemsCarts, createDiscardedItemsCarts } from "../utils/WishlistUtils";
+import { stageContext, WishListsContext } from "App";
+import { Stages } from "reducers/stageReducer";
+import SelectedWishSummary from "components/SelectedWishSummary";
+import DiscardedWishSummary from "components/DiscardedWishSummary";
+import Loading from "components/Loading";
+import Error from "components/Error";
+import { createSelectedItemsCarts, createDiscardedItemsCarts } from "utils/WishlistUtils";
 
 function Summary() {
   const [isLoading, setIsLoading] = useState(true);

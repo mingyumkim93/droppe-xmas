@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { WishListsContext } from "../App";
-import { getDiscardedWishLists } from "../utils/WishlistUtils";
+import { WishListsContext } from "App";
+import { getDiscardedWishLists } from "utils/WishlistUtils";
 
 function DiscardedWishSummary() {
   const { wishLists } = useContext(WishListsContext);

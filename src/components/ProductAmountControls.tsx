@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import ProductDetail from "../types/ProductDetail";
-import { WishListsActionType } from "../reducers/wishListReducer";
-import { WishListsContext } from "../App";
+import ProductDetail from "types/ProductDetail";
+import { WishListsActionType } from "reducers/wishListReducer";
+import { WishListsContext } from "App";
 
 interface ProductAmountControlsProps {
   product: {

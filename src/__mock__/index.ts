@@ -1,6 +1,6 @@
-import ProductDetail from "../types/ProductDetail";
-import User from "../types/User";
-import Cart from "../types/Cart";
+import ProductDetail from "types/ProductDetail";
+import User from "types/User";
+import Cart from "types/Cart";
 
 export const fakeCarts: Cart[] = [
   {

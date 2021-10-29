@@ -1,8 +1,8 @@
-import Cart from "../types/Cart";
-import CartBody from "../types/CartBody";
-import ProductDetail from "../types/ProductDetail";
-import User from "../types/User";
-import WishList from "../types/WishList";
+import Cart from "types/Cart";
+import CartBody from "types/CartBody";
+import ProductDetail from "types/ProductDetail";
+import User from "types/User";
+import WishList from "types/WishList";
 import { trimNumber } from "./MathUtils";
 
 export function getTotalApprovedNumberByProductId(wishLists: WishList[], productId: number) {

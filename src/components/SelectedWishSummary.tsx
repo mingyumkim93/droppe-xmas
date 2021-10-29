@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import { WishListsContext } from "../App";
+import { WishListsContext } from "App";
 import {
   getCartPrice,
   getSelectedWishLists,
   getTotalPriceBeforeDiscount,
   getTotalDiscount,
   getFinalPrice
-} from "../utils/WishlistUtils";
+} from "utils/WishlistUtils";
 
 function SelectedWishSummary() {
   const { wishLists } = useContext(WishListsContext);

@@ -1,7 +1,7 @@
 import { cleanup, render, screen, act } from "@testing-library/react";
 import App from "./App";
-import api from "./api";
-import { fakeCarts, fakeProductDetails, fakeUsers } from "./__mock__";
+import api from "api";
+import { fakeCarts, fakeProductDetails, fakeUsers } from "__mock__";
 
 beforeEach(cleanup);
 jest.mock("./api");

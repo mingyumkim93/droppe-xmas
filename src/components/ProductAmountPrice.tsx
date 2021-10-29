@@ -1,8 +1,8 @@
 import React, { useContext, useMemo } from "react";
-import { WishListsContext } from "../App";
-import ProductDetail from "../types/ProductDetail";
-import { getTotalApprovedNumberByProductId } from "../utils/WishlistUtils";
-import { trimNumber } from "../utils/MathUtils";
+import { WishListsContext } from "App";
+import ProductDetail from "types/ProductDetail";
+import { getTotalApprovedNumberByProductId } from "utils/WishlistUtils";
+import { trimNumber } from "utils/MathUtils";
 
 interface ProductAmountPriceProps {
   product: {

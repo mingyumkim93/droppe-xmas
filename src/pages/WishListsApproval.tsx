@@ -1,12 +1,12 @@
 import React, { useState, useCallback, useEffect, useContext } from "react";
-import api from "../api";
-import WishLists from "../components/WishLists";
-import SideBar from "../components/SideBar";
-import Loading from "../components/Loading";
-import Error from "../components/Error";
-import { WishListsContext } from "../App";
-import { WishListsActionType } from "../reducers/wishListReducer";
-import { getProductIdsFromCarts, createWishLists } from "../utils/WishlistUtils";
+import api from "api";
+import WishLists from "components/WishLists";
+import SideBar from "components/SideBar";
+import Loading from "components/Loading";
+import Error from "components/Error";
+import { WishListsContext } from "App";
+import { WishListsActionType } from "reducers/wishListReducer";
+import { getProductIdsFromCarts, createWishLists } from "utils/WishlistUtils";
 
 function WishListsApproval() {
   const [isLoading, setIsLoading] = useState(true);

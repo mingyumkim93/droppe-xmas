@@ -1,12 +1,12 @@
 import React, { createContext, useReducer } from "react";
 import "./App.scss";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import AppBar from "./components/AppBar";
-import WishListsApproval from "./pages/WishListsApproval";
-import Summary from "./pages/Summary";
-import WishList from "./types/WishList";
-import { wishListsReducer, WishListsAction } from "./reducers/wishListReducer";
-import { StageAction, stageReducer, Stages } from "./reducers/stageReducer";
+import AppBar from "components/AppBar";
+import WishListsApproval from "pages/WishListsApproval";
+import Summary from "pages/Summary";
+import WishList from "types/WishList";
+import { wishListsReducer, WishListsAction } from "reducers/wishListReducer";
+import { StageAction, stageReducer, Stages } from "reducers/stageReducer";
 
 export const WishListsContext = createContext<{
   wishLists: WishList[];

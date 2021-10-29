@@ -1,4 +1,4 @@
-import WishList from "../types/WishList";
+import WishList from "types/WishList";
 
 export enum WishListsActionType {
   SET = "set",

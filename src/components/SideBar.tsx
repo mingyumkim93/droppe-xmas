@@ -1,12 +1,12 @@
 import React, { useContext, useMemo, useState } from "react";
 import "./SideBar.scss";
-import { WishListsContext } from "../App";
+import { WishListsContext } from "App";
 import {
   getApprovedNumberSum,
   getFinalPrice,
   getTotalDiscount,
   getTotalPriceBeforeDiscount
-} from "../utils/WishlistUtils";
+} from "utils/WishlistUtils";
 import CheckOutModal from "./CheckOutModal";
 
 function SideBar() {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./WishListItem.scss";
-import WishList from "../types/WishList";
+import WishList from "types/WishList";
 import ProductRow from "./ProductRow";
 import CartPrice from "./CartPrice";
 

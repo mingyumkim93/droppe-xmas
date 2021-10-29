@@ -1,8 +1,8 @@
 import React, { useContext, useMemo } from "react";
 import "./CartPrice.scss";
-import { WishListsContext } from "../App";
-import WishList from "../types/WishList";
-import { getCartPrice } from "../utils/WishlistUtils";
+import { WishListsContext } from "App";
+import WishList from "types/WishList";
+import { getCartPrice } from "utils/WishlistUtils";
 
 interface CardPriceProps {
   wishList: WishList;
