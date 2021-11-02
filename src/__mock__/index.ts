@@ -1,45 +1,49 @@
 import ProductDetail from "types/ProductDetail";
 import User from "types/User";
 import Cart from "types/Cart";
+import { createWishLists } from "utils/WishlistUtils";
+import WishList from "types/WishList";
 
 export const fakeCarts: Cart[] = [
   {
     date: new Date(),
     id: 1,
     userId: 1,
-    products: [{ productId: 1, quantity: 2 }]
+    products: [{ productId: 1, quantity: 3 }]
   }
 ];
 
 export const fakeProductDetails: ProductDetail[] = [
   {
-    category: "testing",
-    description: "This is for test",
+    category: "fake product category",
+    description: "fake product description",
     id: 1,
-    image: "image",
-    price: 1,
+    image: "fake product image",
+    price: 100,
     rating: { count: 2, rate: 2 },
-    title: "test"
+    title: "fake product title"
   }
 ];
 
 export const fakeUsers: User[] = [
   {
     address: {
-      city: "testing",
+      city: "fake user city",
       geolocation: { lat: 123, long: 123 },
       number: 123,
-      street: "testing",
-      zipcode: "testing"
+      street: "fake user street",
+      zipcode: "fake user zipcode"
     },
     id: 1,
-    email: "testing",
-    name: { firstname: "testing", lastname: "testing" },
-    password: "testing",
-    phone: "123",
-    username: "testing"
+    email: "fake user email",
+    name: { firstname: "fake user firstname", lastname: "fake user lastname" },
+    password: "fake user pasword",
+    phone: "fake user phone",
+    username: "fake user username"
   }
 ];
+
+export const fakeWishLists: WishList[] = createWishLists(fakeCarts, fakeUsers, fakeProductDetails);
 
 const api = {
   fetchCarts: jest.fn().mockResolvedValue(fakeCarts),

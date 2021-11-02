@@ -1,22 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./CheckOutModal.scss";
-import { stageContext } from "App";
-import { useHistory } from "react-router";
-import { StageActionType, Stages } from "reducers/stageReducer";
 
 interface CheckOutModalProps {
   closeModal: () => void;
+  handleCheckOut: () => void;
 }
 
-function CheckOutModal({ closeModal }: CheckOutModalProps) {
-  const { stageDispatch } = useContext(stageContext);
-  const history = useHistory();
-
-  function handleCheckOut() {
-    stageDispatch({ type: StageActionType.SET, payload: { newStage: Stages.SUMMARY } });
-    history.push("/summary");
-  }
-
+function CheckOutModal({ closeModal, handleCheckOut }: CheckOutModalProps) {
   return (
     <div className="modal-overlay">
       <div className="modal-container">

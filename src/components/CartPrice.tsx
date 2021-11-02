@@ -4,16 +4,17 @@ import { WishListsContext } from "App";
 import WishList from "types/WishList";
 import { getCartPrice } from "utils/WishlistUtils";
 
-interface CardPriceProps {
+interface CartPriceProps {
   wishList: WishList;
 }
 
-function CartPrice({ wishList }: CardPriceProps) {
+function CartPrice({ wishList }: CartPriceProps) {
   const { wishLists } = useContext(WishListsContext);
 
   const price = useMemo(() => {
     return getCartPrice(wishLists, wishList);
   }, [wishLists, wishList]);
+
   return (
     <div className="cart-price">
       <div className="first-letter-capitalize">{wishList.userFirstName} </div>
