@@ -1,4 +1,5 @@
 @import "../colors";
+@import "../variables";
 
 .list {
   background-color: $turquoise;
@@ -10,11 +11,22 @@
   width: 100%;
   text-align: left;
   border: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.grow-div {
+  overflow: hidden;
+  transition: height $transition-duration;
+  margin-bottom: 8px;
+}
+
+.arrow-icon {
+  transition: transform $transition-duration;
 }
 
 .expanded-wish-list {
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  margin-bottom: 8px;
 }
