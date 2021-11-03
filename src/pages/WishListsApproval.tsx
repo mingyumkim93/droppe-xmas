@@ -38,7 +38,7 @@ function WishListsApproval() {
   }, [getWishLists]);
 
   return (
-    <div className="page-container">
+    <main className="page-container">
       {isLoading ? (
         <Loading />
       ) : errorMessage ? (
@@ -49,7 +49,7 @@ function WishListsApproval() {
           <SideBar />
         </>
       )}
-    </div>
+    </main>
   );
 }
 

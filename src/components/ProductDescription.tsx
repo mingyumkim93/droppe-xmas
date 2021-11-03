@@ -12,12 +12,12 @@ function ProductDescription({ description }: ProductDescriptionProps) {
   }
 
   return (
-    <div className="product-description first-letter-capitalize">
+    <span className="product-description first-letter-capitalize">
       {readMore ? description.slice(0, 100) : description}
       <span onClick={toggleReadMore} className="read-more-or-less">
         {description.length > 100 ? (readMore ? " ...read more" : " show less") : ""}
       </span>
-    </div>
+    </span>
   );
 }
 

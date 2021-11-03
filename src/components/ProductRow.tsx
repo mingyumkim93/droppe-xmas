@@ -3,6 +3,7 @@ import "./ProductRow.scss";
 import ProductDetail from "types/ProductDetail";
 import RatingStars from "./RatingStars";
 import ProductDescription from "./ProductDescription";
+import ProductPrice from "./ProductPrice";
 import ProductAmountControls from "./ProductAmountControls";
 import ProductAmountPrice from "./ProductAmountPrice";
 
@@ -17,25 +18,27 @@ interface ProductRowProps {
 
 function ProductRow({ product, cartId }: ProductRowProps) {
   return (
-    <div
+    <article
       //these css properties are not applied from css file for some reason.
       style={{ display: "flex", alignItems: "center", borderBottom: "1px solid black" }}
       className="product-container"
     >
       <img className="product-img" src={product.productDetail.image} alt="product" />
-      <div className="wide-section">
+      <section className="wide-section">
         <b>{product.productDetail.title}</b>
         <RatingStars rating={product.productDetail.rating} />
-      </div>
-      <div className="wide-section">
+      </section>
+      <section className="wide-section">
         <ProductDescription description={product.productDetail.description} />
-      </div>
-      <div className="narrow-section">{product.productDetail.price.toFixed(2)} €/Count</div>
-      <div className="narrow-section">
+      </section>
+      <section className="narrow-section">
+        <ProductPrice price={product.productDetail.price.toFixed(2)} />
+      </section>
+      <section className="narrow-section">
         <ProductAmountControls product={product} cartId={cartId} />
         <ProductAmountPrice product={product} />
-      </div>
-    </div>
+      </section>
+    </article>
   );
 }
 

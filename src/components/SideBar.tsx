@@ -36,7 +36,7 @@ function SideBar() {
   }
 
   return (
-    <div className="side-bar">
+    <aside className="side-bar">
       <h4>Order summary</h4>
       <div>
         <div>Total of {totalItemNum} products</div>
@@ -54,7 +54,7 @@ function SideBar() {
       </div>
       <button onClick={openModal}>Check out</button>
       {modalOpen && <CheckOutModal closeModal={closeModal} handleCheckOut={handleCheckOut} />}
-    </div>
+    </aside>
   );
 }
 

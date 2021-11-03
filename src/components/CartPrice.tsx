@@ -16,10 +16,10 @@ function CartPrice({ wishList }: CartPriceProps) {
   }, [wishLists, wishList]);
 
   return (
-    <div className="cart-price">
+    <section className="cart-price">
       <div className="first-letter-capitalize">{wishList.userFirstName} </div>
       <b>{price} €</b>
-    </div>
+    </section>
   );
 }
 

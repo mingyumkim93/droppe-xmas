@@ -16,12 +16,14 @@ function SelectedWishSummary() {
   const finalPrice = getFinalPrice(wishLists);
 
   return (
-    <div>
-      <h2>Approved items</h2>
+    <section>
+      <header>
+        <h2>Approved items</h2>
+      </header>
       {selectedWishLists.length > 0 ? (
         <div>
           {selectedWishLists.map((wishList) => (
-            <div key={wishList.userId}>
+            <article key={wishList.userId}>
               <div className="first-letter-capitalize">{wishList.userFirstName}</div>
               <ul>
                 {wishList.products.map((product) => (
@@ -33,7 +35,7 @@ function SelectedWishSummary() {
               <div className="cart-price">
                 <b>{getCartPrice(wishLists, wishList)} €</b>
               </div>
-            </div>
+            </article>
           ))}
           <div className="cost-summary">
             <b>Before discount: {totalPriceBeforeDiscount} €</b>
@@ -44,7 +46,7 @@ function SelectedWishSummary() {
       ) : (
         <div>None</div>
       )}
-    </div>
+    </section>
   );
 }
 

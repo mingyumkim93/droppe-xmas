@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 
 function AppBar() {
   return (
-    <div className="app-bar">
+    <header className="app-bar">
       <Link to="/">
         <h3>Droppe-XMAS</h3>
       </Link>
-    </div>
+    </header>
   );
 }
 

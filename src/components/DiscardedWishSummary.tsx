@@ -7,12 +7,14 @@ function DiscardedWishSummary() {
   const discardedWishLists = getDiscardedWishLists(wishLists);
 
   return (
-    <div>
-      <h2>Discarded items</h2>
+    <section>
+      <header>
+        <h2>Discarded items</h2>
+      </header>
       {discardedWishLists.length > 0 ? (
         <div>
           {discardedWishLists.map((wishList) => (
-            <div key={wishList.userId}>
+            <article key={wishList.userId}>
               <div className="first-letter-capitalize">{wishList.userFirstName}</div>
               <ul>
                 {wishList.products.map((product) => (
@@ -21,13 +23,13 @@ function DiscardedWishSummary() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </article>
           ))}
         </div>
       ) : (
         <div>None</div>
       )}
-    </div>
+    </section>
   );
 }
 

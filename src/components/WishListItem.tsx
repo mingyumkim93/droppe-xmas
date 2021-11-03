@@ -19,19 +19,18 @@ function WishListItem({ wishList }: WishListProps) {
   }
 
   useEffect(() => {
-    if (open) {
-      setGrowDivHeight(expandedList.current.clientHeight + "px");
-    } else setGrowDivHeight("0px");
+    setGrowDivHeight(open ? expandedList.current.clientHeight + "px" : "0px");
   }, [open]);
 
   return (
-    <>
+    <section>
       <button className="list" onClick={toggleOpen}>
         <div className="first-letter-capitalize">{wishList.userFirstName}</div>
         <span className="arrow-icon" style={{ transform: open ? "rotate(180deg)" : "" }}>
           ▼
         </span>
       </button>
+
       <div ref={growDiv} className="grow-div" style={{ height: growDivHeight }}>
         <div ref={expandedList} className="expanded-wish-list">
           {wishList.products.map((product) => (
@@ -40,7 +39,7 @@ function WishListItem({ wishList }: WishListProps) {
           <CartPrice wishList={wishList} />
         </div>
       </div>
-    </>
+    </section>
   );
 }
 

@@ -38,7 +38,7 @@ function Summary() {
   }, [stage, history, postCarts]);
 
   return (
-    <div className="page-container">
+    <main className="page-container">
       {isLoading ? (
         <Loading />
       ) : errorMessage ? (
@@ -52,7 +52,7 @@ function Summary() {
           </div>
         </div>
       )}
-    </div>
+    </main>
   );
 }
 
