@@ -1,42 +1,13 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React from "react";
 import "./Summary.scss";
-import api from "api";
-import { useHistory } from "react-router";
-import { WishListsContext } from "contexts/WishListsContext";
-import { StageContext } from "contexts/StageContext";
-import { Stages } from "reducers/stageReducer";
 import SelectedWishSummary from "components/SelectedWishSummary";
 import DiscardedWishSummary from "components/DiscardedWishSummary";
 import Loading from "components/Loading";
 import Error from "components/Error";
-import { createSelectedItemsCarts, createDiscardedItemsCarts } from "utils/WishlistUtils";
+import useFakeStoreAPI, { useFakeStoreAPIParam } from "hooks/useFakeStoreAPI";
 
 function Summary() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const { stage } = useContext(StageContext);
-  const { wishLists } = useContext(WishListsContext);
-  const history = useHistory();
-
-  const postCarts = useCallback(async () => {
-    const selectedWishLists = createSelectedItemsCarts(wishLists);
-    const discardedWishLists = createDiscardedItemsCarts(wishLists);
-    try {
-      await api.postCarts(selectedWishLists);
-      await api.postCarts(discardedWishLists);
-    } catch (e) {
-      setErrorMessage("Something went wrong! Please try later.");
-    } finally {
-      setIsLoading(false);
-    }
-  }, [wishLists]);
-
-  useEffect(() => {
-    if (stage !== Stages.SUMMARY) history.push("/");
-    else {
-      postCarts();
-    }
-  }, [stage, history, postCarts]);
+  const { isLoading, errorMessage } = useFakeStoreAPI(useFakeStoreAPIParam.POST_CARTS);
 
   return (
     <main className="page-container">
