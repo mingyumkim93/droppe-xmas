@@ -9,7 +9,7 @@ interface StageContextProviderProps {
   children: ReactNode;
 }
 function StageContextProvider({ children }: StageContextProviderProps) {
-  const [stage, stageDispatch] = useReducer(stageReducer, 1);
+  const [stage, stageDispatch] = useReducer(stageReducer, Stages.APPROVAL);
 
   return <StageContext.Provider value={{ stage, stageDispatch }}>{children}</StageContext.Provider>;
 }

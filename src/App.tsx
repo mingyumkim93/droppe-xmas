@@ -2,6 +2,7 @@ import React from "react";
 import "./App.scss";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AppBar from "components/AppBar";
+import ProtectedRoute from "components/ProtectedRoute";
 import WishListsApproval from "pages/WishListsApproval";
 import Summary from "pages/Summary";
 import WishListsProvider from "contexts/WishListsContext";
@@ -15,9 +16,9 @@ function App() {
           <Router>
             <AppBar />
             <Switch>
-              <Route path="/summary">
+              <ProtectedRoute path="/summary">
                 <Summary />
-              </Route>
+              </ProtectedRoute>
               <Route exact path="/">
                 <WishListsApproval />
               </Route>
