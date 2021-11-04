@@ -44,7 +44,7 @@ export default function useFakeStoreAPI(param: number) {
       await api.postCarts(selectedWishLists);
       await api.postCarts(discardedWishLists);
     } catch (e) {
-      setErrorMessage("Something went wrong! Please try later.");
+      setErrorMessage(GENERAL_ERROR_MESSAGE);
     } finally {
       setIsLoading(false);
     }
