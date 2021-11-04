@@ -4,7 +4,7 @@ import WishLists from "components/WishLists";
 import SideBar from "components/SideBar";
 import Loading from "components/Loading";
 import Error from "components/Error";
-import { WishListsContext } from "App";
+import { WishListsContext } from "contexts/WishListsContext";
 import { WishListsActionType } from "reducers/wishListReducer";
 import { getProductIdsFromCarts, createWishLists } from "utils/WishlistUtils";
 

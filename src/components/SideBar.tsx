@@ -1,7 +1,7 @@
 import React, { useContext, useMemo, useState } from "react";
 import "./SideBar.scss";
-import { WishListsContext } from "App";
-import { stageContext } from "App";
+import { WishListsContext } from "contexts/WishListsContext";
+import { StageContext } from "contexts/StageContext";
 import {
   getApprovedNumberSum,
   getFinalPrice,
@@ -14,7 +14,7 @@ import CheckOutModal from "./CheckOutModal";
 
 function SideBar() {
   const { wishLists } = useContext(WishListsContext);
-  const { stageDispatch } = useContext(stageContext);
+  const { stageDispatch } = useContext(StageContext);
   const history = useHistory();
   const [modalOpen, setModalOpen] = useState(false);
   const totalItemNum = useMemo(() => getApprovedNumberSum(wishLists), [wishLists]);

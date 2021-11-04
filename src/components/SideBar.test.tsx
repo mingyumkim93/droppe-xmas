@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { WishListsContext } from "App";
+import { WishListsContext } from "contexts/WishListsContext";
 import { fakeWishLists } from "__mock__";
 import SideBar from "./SideBar";
 

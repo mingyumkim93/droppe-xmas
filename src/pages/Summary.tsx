@@ -2,7 +2,8 @@ import React, { useCallback, useContext, useEffect, useState } from "react";
 import "./Summary.scss";
 import api from "api";
 import { useHistory } from "react-router";
-import { stageContext, WishListsContext } from "App";
+import { WishListsContext } from "contexts/WishListsContext";
+import { StageContext } from "contexts/StageContext";
 import { Stages } from "reducers/stageReducer";
 import SelectedWishSummary from "components/SelectedWishSummary";
 import DiscardedWishSummary from "components/DiscardedWishSummary";
@@ -13,7 +14,7 @@ import { createSelectedItemsCarts, createDiscardedItemsCarts } from "utils/Wishl
 function Summary() {
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const { stage } = useContext(stageContext);
+  const { stage } = useContext(StageContext);
   const { wishLists } = useContext(WishListsContext);
   const history = useHistory();
 

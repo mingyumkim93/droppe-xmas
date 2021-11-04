@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { WishListsContext } from "App";
+import { WishListsContext } from "contexts/WishListsContext";
 import { getDiscardedWishLists } from "utils/WishlistUtils";
 
 function DiscardedWishSummary() {

@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import { WishListsContext } from "App";
+import { WishListsContext } from "contexts/WishListsContext";
 import { fakeProductDetails, fakeWishLists } from "__mock__";
 import ProductAmountPrice from "./ProductAmountPrice";
 

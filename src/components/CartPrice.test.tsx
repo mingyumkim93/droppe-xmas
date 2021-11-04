@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import CartPrice from "./CartPrice";
 import { fakeWishLists } from "__mock__";
 import { getCartPrice } from "../utils/WishlistUtils";
-import { WishListsContext } from "App";
+import { WishListsContext } from "contexts/WishListsContext";
 
 describe("CartPrice", () => {
   it("should show firstname and total price of wish list", () => {

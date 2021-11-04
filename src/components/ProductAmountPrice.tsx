@@ -1,5 +1,5 @@
 import React, { useContext, useMemo } from "react";
-import { WishListsContext } from "App";
+import { WishListsContext } from "contexts/WishListsContext";
 import ProductDetail from "types/ProductDetail";
 import { getTotalApprovedNumberByProductId } from "utils/WishlistUtils";
 import { trimNumber } from "utils/MathUtils";
