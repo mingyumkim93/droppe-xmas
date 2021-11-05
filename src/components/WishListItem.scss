@@ -19,14 +19,11 @@
   overflow: hidden;
   transition: height $transition-duration;
   margin-bottom: 8px;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  background-color: white;
 }
 
 .arrow-icon {
   transition: transform $transition-duration;
-}
-
-.expanded-wish-list {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }

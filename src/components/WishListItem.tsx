@@ -32,7 +32,7 @@ function WishListItem({ wishList }: WishListProps) {
       </button>
 
       <div ref={growDiv} className="grow-div" style={{ height: growDivHeight }}>
-        <div ref={expandedList} className="expanded-wish-list">
+        <div ref={expandedList}>
           {wishList.products.map((product) => (
             <ProductRow product={product} cartId={wishList.cartId} key={product.productDetail.id} />
           ))}
