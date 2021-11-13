@@ -1,4 +1,4 @@
-# Droppe X-max web application created by Mingyum Kim
+# Wish-list approval web application created by Mingyum Kim
 
 ## Introduction
 
