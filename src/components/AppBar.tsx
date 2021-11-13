@@ -6,7 +6,7 @@ function AppBar() {
   return (
     <header className="app-bar">
       <Link to="/">
-        <h3>Droppe-XMAS</h3>
+        <h3>Wish list approval</h3>
       </Link>
     </header>
   );
